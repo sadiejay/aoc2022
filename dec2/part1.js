@@ -81,6 +81,21 @@ export const processData = (rawInputs) => {
   console.log(`${shapeArr}`);
 };
 
+//  take the data array
+//  find respective key from data (either oppCode or secCol)
+
+
+// another option
+//  make groups of inputs from 2 charaters
+//  then create switch statements for potential outcomes
+//      ex. if A Z then shapeScore=+x and outcomeScore =+y
+//      ex. if A Z then totalScore=+z
+//      return totalScore
+
+
+
+
+
 // spit out results
 getData('test.txt').then(data => processData(data))
     .then(totalScore => console.log(`🪨📄✂️ The total score is ${totalScore} calories 🪨📄✂️`));
