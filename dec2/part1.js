@@ -5,12 +5,82 @@
 // selected shapes isn't something that's "calulated" as opposed to round outcome
 // once round outcome is calculated selected shape needs to be added
 
-// selectedShapes = [
-    // {shape: 'rock', shapePoints: 1, winsOver: 'scissors', losesOver: 'paper', oppCode: 'A', secCol: 'X'}
-    // {shape: 'paper', shapePoints: 2, winsOver: 'rock', losesOver: 'scissors', oppCode: 'B', secCol: 'Y'}
-    // {shape: 'scissors', shapePoints: 3, winsOver: 'paper', losesOver: 'rock', oppCode: 'C', secCol: 'Z'}
-// ]
+const selectedShapes = [
+    {
+        shape: 'rock',
+        shapePoints: 1,
+        winsOver: 'scissors',
+        losesOver: 'paper',
+        oppCode: 'A',
+        secCol: 'X',
+    },
+    {
+        shape: 'paper',
+        shapePoints: 2,
+        winsOver: 'rock',
+        losesOver: 'scissors',
+        oppCode: 'B',
+        secCol: 'Y',
+    },
+    {
+        shape: 'scissors',
+        shapePoints: 3,
+        winsOver: 'paper',
+        losesOver: 'rock',
+        oppCode: 'C',
+        secCol: 'Z',
+    }
+]
 
-// roundOutcome = [
-    // {winPoints: 6, drawPoints: 3, losePoints: 0,}
-// ]
+const roundOutcome = [
+    {
+        winPoints: 6,
+        drawPoints: 3,
+        losePoints: 0,
+    }
+]
+
+// get Data
+export const getData = async (inputFile) => {
+    let rawInputs = await fetch(inputFile)
+        .then(response => response.text());
+    return rawInputs;
+};
+
+getData('test.txt')
+
+
+// write the code that processes data
+export const processData = (rawInputs) => {
+  // takes raw input and splits into new array
+  let inputs = [...new Set (rawInputs.split(/[\s\n\n]+/))];
+  console.log(inputs);
+
+//   divides array into two this is oppArray
+  let oppArray = [];
+  function evenInputs(inputs) {
+    for (let i = 0; i < inputs.length; i += 2) {
+      oppArray.push(inputs[i]);
+    }
+  }
+
+//   this is secCol array
+  let secColArray= [];
+  function oddInputs(inputs) {
+    for (let i = 1; i < inputs.length; i += 2) {
+    secColArray.push(inputs[i]);
+    }
+  }
+// runs function
+  evenInputs(inputs);
+  oddInputs(inputs);
+  console.log(`Opp array is ${oppArray} and SecCol array is ${secColArray}`);
+
+//   testing accessing an object for a value
+  const shapeArr = selectedShapes.map((shape) => shape.shape);
+  console.log(`${shapeArr}`);
+};
+
+// spit out results
+getData('test.txt').then(data => processData(data))
+    .then(totalScore => console.log(`🪨📄✂️ The total score is ${totalScore} calories 🪨📄✂️`));
