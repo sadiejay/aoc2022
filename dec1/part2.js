@@ -24,7 +24,7 @@ export const processDatap2 = (rawInputs) => {
   // we need to parse inputs from line breaks
   //  add all numbers until a '0' is found
 
-  const iterator = inputs[Symbol.iterator]();
+  var iterator = inputs[Symbol.iterator]();
 
   for (let i = 0; i <= inputs.length - 1; i++) {
     //   console.log(`Interating over all inputs${inputs[i]}`);
@@ -46,17 +46,33 @@ export const processDatap2 = (rawInputs) => {
   }
   console.log(`This is a list of elf's calories ${array}`);
   // console.log(`The highest number of cals is ${Math.max(...array)}`);
-  // find highest number
-  let highestCal = Math.max(...array);
-  console.log(`The highest number of cals is ${highestCal}`);
 
+    //  sort array in numerical order highest to lowest
+    let highestToLowest = [...new Set (array.sort((a, b) => b - a))];
+    console.log(`New List of elves calories high to low with duplicates removed: ${highestToLowest}`);
+
+    // put first 3 values in new array
+    let threeHighestCalArr = array.slice(0, 3);
+    console.log(`List # of elves calories high to low ${threeHighestCalArr}`);
+
+    //  doing the same as abouve but renaming variables because idk how to break up this super mega function lololsob
+    // used var because idk how to break this up and I can redeclare lolol
+    var iterator = threeHighestCalArr[Symbol.iterator]();
+    let threeHighestCalSum = 0;
+    // add values
+        for (const value of iterator) {
+          threeHighestCalSum += value;
+          console.log(`I'm adding the top x higheset cals ${threeHighestCalSum}`);
+        }
+        console.log(`The sum of the top x highest number of cals is ${threeHighestCalSum}`);
+        return threeHighestCalSum;
 };
 
 // spit out results
 getDatap2("test.txt")
   .then((data) => processDatap2(data))
-  .then((threeHighestCal) =>
+  .then((threeHighestCalSum) =>
     console.log(
-      `🍕 The sum of the 3 elves with highest calories is ${threeHighestCal} calories 🍕`
+      `🍕 The sum of the 3 elves with highest calories is ${threeHighestCalSum} calories 🍕`
     )
   );
