@@ -1,3 +1,17 @@
+# I DID IT
+First time completing an advent of code by myself for the most part. Can't wait to look back in some years to see how far I've come haha
+<br>
+<br>
+<br>
+
+## Notes:
+I would love to know how to refactor the huge process data function I have going on lolol everything inside is like a nesting doll and I'm pretty sure that code could be a lot DRYer haha
+<br>
+<br>
+<br>
+
+
+
 ## Resources used
 - [Referenced my take home to set up the async/await and testing set up](https://github.com/sadiejay/fcm-take-home)
 - [Regexer](https://regexr.com/) -  that I ended up not using
