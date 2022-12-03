@@ -48,17 +48,19 @@ export const processData = (rawInputs) => {
   }
   console.log(`This is a list of elf's calories ${array}`);
   // console.log(`The highest number of cals is ${Math.max(...array)}`);
-
   // find highest number
   let highestCal = Math.max(...array);
   console.log(`The highest number of cals is ${highestCal}`);
-  return highestCal;
+  // return highestCal;
   // one elf can carry multiple items
   // one elf = one line break
   // add numbers within line break
+  return highestCal
 };
 
 
-//
+
+
+// spit out results
 getData('data.txt').then(data => processData(data))
     .then(highestCal => console.log(`🍕 The highest calories is ${highestCal} calories 🍕`));
