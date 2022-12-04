@@ -43,50 +43,40 @@ export const processDatap2 = (rawInputs) => {
   oddInputs(inputs);
   console.log(`Opp array is ${oppArray} and SecCol array is ${secColArray}`);
 
-  // translates oppArray letters to shapeScore (shapeScore = oppArrNum in notes)
-  let shapeScoreArr = [];
-  let shapeScoreNum = 0;
-
-  oppArray.forEach((letter) => {
-    switch (letter) {
-      case "A":
-        shapeScoreNum += 3;
-        break;
-      case "B":
-        shapeScoreNum += 2;
-        break;
-      case "C":
-        shapeScoreNum += 1;
-        break;
-    }
-    shapeScoreArr.push(shapeScoreNum);
-    shapeScoreNum = 0;
+  // takes oppCol and SecCol arrays and group pairs into arrays
+  //   let testing = [];
+  //   var A = ['A', 'B', 'C', 'D'];
+  //   var B = ['Q', 'W', 'E', 'R'];
+  let outComeScoreArr = oppArray.map(function (n, i) {
+    // console.log(B[i]);
+    // returns an array where oppCol/secCol
+    return `${n}${secColArray[i]}`;
   });
-  console.log(shapeScoreArr);
+  console.log(outComeScoreArr);
 
-  // takes secColArray and translates to outComeScore
-  let outComeScoreArr = [];
+  // takes outComeScoreArr and translates to outComeScore
   let outComeScoreNum = 0;
 
-  secColArray.forEach((letter, index) => {
-      let shapeScoreNum = shapeScoreArr[index];
-      console.log(shapeScoreArr);
-      console.log(secColArray);
-    //   console.log(letter, shapeScoreNum);
-      outComeScoreNum = 0;
-    switch (letter) {
-      // x = n
-      // n = oppArrNum
+  outComeScoreArr.forEach((pair) => {
+    outComeScoreNum = 0;
+    switch (pair) {
+      // AX = 3
+      // AY = 4
+      // AZ = 8
+      // BX = 1
+      // BY = 5
+      // BZ = 9
+      // CX = 2
+      // CY = 6
+      // CZ = 7
       case "X":
         outComeScoreNum = shapeScoreNum;
         outComeScoreArr.push(outComeScoreNum);
         break;
-      // y = n+3
       case "Y":
         outComeScoreNum = shapeScoreNum + 3;
         outComeScoreArr.push(outComeScoreNum);
         break;
-      // z = n+6
       case "Z":
         outComeScoreNum = shapeScoreNum + 6;
         outComeScoreArr.push(outComeScoreNum);
