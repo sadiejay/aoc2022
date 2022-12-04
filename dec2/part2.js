@@ -15,7 +15,7 @@ export const getDatap2 = async (inputFile) => {
   return rawInputs;
 };
 
-getDatap2("test.txt");
+getDatap2("data.txt");
 
 // write the code that processes data
 export const processDatap2 = (rawInputs) => {
@@ -120,7 +120,7 @@ export const processDatap2 = (rawInputs) => {
 };
 
 // spit out results
-getDatap2("test.txt")
+getDatap2("data.txt")
   .then((data) => processDatap2(data))
   .then((totalSecColScore) =>
     console.log(`🪨📄✂️ The total score is ${totalSecColScore} points 🪨📄✂️`)
