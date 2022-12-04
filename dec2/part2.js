@@ -56,44 +56,65 @@ export const processDatap2 = (rawInputs) => {
 
   // takes outComeScoreArr and translates to outComeScore
   let outComeScoreNum = 0;
-
+  let totRoundScoreArr = [];
   outComeScoreArr.forEach((pair) => {
     outComeScoreNum = 0;
     switch (pair) {
       // AX = 3
+      case "AX":
+        outComeScoreNum += 3;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // AY = 4
+      case "AY":
+        outComeScoreNum += 4;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // AZ = 8
+      case "AZ":
+        outComeScoreNum += 8;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // BX = 1
+      case "BX":
+        outComeScoreNum += 1;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // BY = 5
+      case "BY":
+        outComeScoreNum += 5;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // BZ = 9
+      case "BZ":
+        outComeScoreNum += 8;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // CX = 2
+      case "CX":
+        outComeScoreNum += 2;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // CY = 6
+      case "CY":
+        outComeScoreNum += 6;
+        totRoundScoreArr.push(outComeScoreNum);
+        break;
       // CZ = 7
-      case "X":
-        outComeScoreNum = shapeScoreNum;
-        outComeScoreArr.push(outComeScoreNum);
-        break;
-      case "Y":
-        outComeScoreNum = shapeScoreNum + 3;
-        outComeScoreArr.push(outComeScoreNum);
-        break;
-      case "Z":
-        outComeScoreNum = shapeScoreNum + 6;
-        outComeScoreArr.push(outComeScoreNum);
+      case "CZ":
+        outComeScoreNum += 7;
+        totRoundScoreArr.push(outComeScoreNum);
         break;
     }
-    // added all the outComeScores
-    console.log(outComeScoreArr);
+    // added all the outComeScores to totRoundScoreArr
+    console.log(totRoundScoreArr);
     outComeScoreNum = 0;
   });
 
-  // adding SecCol shapeScores within the secColArray numbers
-  let secColShapeScores = secColArray.reduce((a, b) => a + b, 0);
-  console.log(secColShapeScores);
-  // adds SecColShapeScores with OutComeScoreNum to get totalSecColScore
-  const totalSecColScore = secColShapeScores + outComeScoreNum;
-  console.log(totalSecColScore);
-  return totalSecColScore;
+  // adding outComeScores within the totRoundScoreArr
+  let totRoundScoreNum = totRoundScoreArr.reduce((a, b) => a + b, 0);
+  console.log(totRoundScoreNum);
+  return totRoundScoreNum;
 
   // end processData
 };
