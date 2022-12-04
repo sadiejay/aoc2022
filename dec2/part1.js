@@ -53,8 +53,9 @@ getData('test.txt')
 // write the code that processes data
 export const processData = (rawInputs) => {
   // takes raw input and splits into new array
-  let inputs = [...new Set (rawInputs.split(/[\s\n\n]+/))];
-  console.log(inputs);
+  let inputs = [...(rawInputs.replace(/\n/g, " ").split(" "))];
+  // console.log(`These are the inputs ${inputs}`);
+
 
   // take input and translate the data into shapeScores
   // take shapeScore for secCol and add
@@ -89,7 +90,7 @@ export const processData = (rawInputs) => {
     shapeScoreArr.push(shapeScoreNum);
     shapeScoreNum = 0;
   });
-  console.log(shapeScoreArr);
+  // console.log(shapeScoreArr);
 
   // divides array into two this is oppArray
   let oppArray = [];
