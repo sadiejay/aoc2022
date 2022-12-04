@@ -56,53 +56,16 @@ export const processData = (rawInputs) => {
   let inputs = [...new Set (rawInputs.split(/[\s\n\n]+/))];
   console.log(inputs);
 
-//   divides array into two this is oppArray
-//   let oppArray = [];
-//   function evenInputs(inputs) {
-//     for (let i = 0; i < inputs.length; i += 2) {
-//       oppArray.push(inputs[i]);
-//     }
-//   }
-
-//   this is secCol array
-//   let secColArray= [];
-//   function oddInputs(inputs) {
-//     for (let i = 1; i < inputs.length; i += 2) {
-//     secColArray.push(inputs[i]);
-//     }
-//   }
-// runs function
-//   evenInputs(inputs);
-//   oddInputs(inputs);
-//   console.log(`Opp array is ${oppArray} and SecCol array is ${secColArray}`);
-
-//   testing accessing an object for a value
-//   const shapeArr = selectedShapes.map((shape) => shape.shape);
-//   console.log(`${shapeArr}`);
-
-
-//  take the data array
-//  find respective key from data (either oppCode or secCol)
-
-
-// another option
-//  make groups of inputs from 2 charaters
-//  then create switch statements for potential outcomes
-//      ex. if A Z then shapeScore=+x and outcomeScore =+y
-//      ex. if A Z then totalScore=+z
-//      return totalScore
-
-// takes 2 elements in the array and creates a new array
-// function* chunks(arr, n) {
-//   for (let i = 0; i < arr.length; i += n) {
-//     yield arr.slice(i, i + n);
-//   }
-// }
-
-// let chunkedInputsArrs = [...chunks(inputs, 2)];
-// console.log(chunkedInputsArrs);
-
-
+	// take input and translate the data into shapeScores
+	// take shapeScore for secCol and add
+	// create fraction from shapeScores of oppCol and secCol
+		// if fraction = 1/3 --> outCome score = 0 (l)
+		// if fraction = 1/2 --> outCome score = 6 (w)
+		// if fraction = 2/3 --> outCome score = 6 (w)
+		// if fraction = 1 --> outCome score = 3 (draw)
+		// if fraction = 3/2 --> outCome score = 0 (l)
+		// if fraction = 2 --> outCome score = 0 (l)
+		// if fraction = 3 --> outCome score = 6 (w)
 
 // end processData
 };
