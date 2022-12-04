@@ -43,20 +43,20 @@ export const processDatap2 = (rawInputs) => {
   oddInputs(inputs);
   console.log(`Opp array is ${oppArray} and SecCol array is ${secColArray}`);
 
-  // translates oppArray letters to shapeScore
+  // translates oppArray letters to shapeScore (shapeScore = oppArrNum in notes)
   let shapeScoreArr = [];
   let shapeScoreNum = 0;
 
   oppArray.forEach((letter) => {
     switch (letter) {
       case "A":
-        shapeScoreNum += 1;
+        shapeScoreNum += 3;
         break;
       case "B":
         shapeScoreNum += 2;
         break;
       case "C":
-        shapeScoreNum += 3;
+        shapeScoreNum += 1;
         break;
     }
     shapeScoreArr.push(shapeScoreNum);
@@ -64,36 +64,38 @@ export const processDatap2 = (rawInputs) => {
   });
   console.log(shapeScoreArr);
 
-  // takes shapeScoreFractions and translates to outComeScore
+  // takes secColArray and translates to outComeScore
   let outComeScoreArr = [];
   let outComeScoreNum = 0;
 
-//   shapeScoreFraction.forEach((fraction) => {
-//     switch (fraction) {
-//       // if fraction = 3/2 --> outCome score = 0 (l)
-//       // if fraction = 2 --> outCome score = 0 (l)
-//       // if fraction = 1/3 --> outCome score = 0 (l)
-//       case 1 / 3:
-//       case 3 / 2:
-//       case 2:
-//         outComeScoreNum += 0;
-//         break;
-//       // if fraction = 1/2 --> outCome score = 6 (w)
-//       // if fraction = 2/3 --> outCome score = 6 (w)
-//       // if fraction = 3 --> outCome score = 6 (w)
-//       case 1 / 2:
-//       case 2 / 3:
-//       case 3:
-//         outComeScoreNum += 6;
-//         break;
-//       // if fraction = 1 --> outCome score = 3 (draw)
-//       case 1:
-//         outComeScoreNum += 3;
-//         break;
-//     }
-//     // added all the outComeScores
-//     console.log(outComeScoreNum);
-//   });
+  secColArray.forEach((letter, index) => {
+      let shapeScoreNum = shapeScoreArr[index];
+      console.log(shapeScoreArr);
+      console.log(secColArray);
+    //   console.log(letter, shapeScoreNum);
+      outComeScoreNum = 0;
+    switch (letter) {
+      // x = n
+      // n = oppArrNum
+      case "X":
+        outComeScoreNum = shapeScoreNum;
+        outComeScoreArr.push(outComeScoreNum);
+        break;
+      // y = n+3
+      case "Y":
+        outComeScoreNum = shapeScoreNum + 3;
+        outComeScoreArr.push(outComeScoreNum);
+        break;
+      // z = n+6
+      case "Z":
+        outComeScoreNum = shapeScoreNum + 6;
+        outComeScoreArr.push(outComeScoreNum);
+        break;
+    }
+    // added all the outComeScores
+    console.log(outComeScoreArr);
+    outComeScoreNum = 0;
+  });
 
   // adding SecCol shapeScores within the secColArray numbers
   let secColShapeScores = secColArray.reduce((a, b) => a + b, 0);
