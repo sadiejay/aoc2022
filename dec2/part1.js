@@ -56,18 +56,113 @@ export const processData = (rawInputs) => {
   let inputs = [...new Set (rawInputs.split(/[\s\n\n]+/))];
   console.log(inputs);
 
-	// take input and translate the data into shapeScores
-	// take shapeScore for secCol and add
-	// create fraction from shapeScores of oppCol and secCol
-		// if fraction = 1/3 --> outCome score = 0 (l)
-		// if fraction = 1/2 --> outCome score = 6 (w)
-		// if fraction = 2/3 --> outCome score = 6 (w)
-		// if fraction = 1 --> outCome score = 3 (draw)
-		// if fraction = 3/2 --> outCome score = 0 (l)
-		// if fraction = 2 --> outCome score = 0 (l)
-		// if fraction = 3 --> outCome score = 6 (w)
+  // take input and translate the data into shapeScores
+  // take shapeScore for secCol and add
+  // create fraction from shapeScores of oppCol and secCol
+  // if fraction = 1/3 --> outCome score = 0 (l)
+  // if fraction = 1/2 --> outCome score = 6 (w)
+  // if fraction = 2/3 --> outCome score = 6 (w)
+  // if fraction = 1 --> outCome score = 3 (draw)
+  // if fraction = 3/2 --> outCome score = 0 (l)
+  // if fraction = 2 --> outCome score = 0 (l)
+  // if fraction = 3 --> outCome score = 6 (w)
 
-// end processData
+  // translates letters to shapeScore
+  let shapeScoreArr = [];
+  let shapeScoreNum = 0;
+
+  inputs.forEach((input) => {
+    switch (input) {
+      case "A":
+      case "X":
+        shapeScoreNum += 1;
+        break;
+      case "B":
+      case "Y":
+        shapeScoreNum += 2;
+        break;
+      case "C":
+      case "Z":
+        shapeScoreNum += 3;
+        break;
+    }
+    shapeScoreArr.push(shapeScoreNum);
+    shapeScoreNum = 0;
+  });
+  console.log(shapeScoreArr);
+
+  // divides array into two this is oppArray
+  let oppArray = [];
+  function evenInputs(shapeScoreArr) {
+    for (let i = 0; i < shapeScoreArr.length; i += 2) {
+      oppArray.push(shapeScoreArr[i]);
+    }
+  }
+
+  // this is secCol array
+  let secColArray = [];
+  function oddInputs(shapeScoreArr) {
+    for (let i = 1; i < shapeScoreArr.length; i += 2) {
+      secColArray.push(shapeScoreArr[i]);
+    }
+  }
+  // runs function
+  evenInputs(shapeScoreArr);
+  oddInputs(shapeScoreArr);
+  console.log(`Opp array is ${oppArray} and SecCol array is ${secColArray}`);
+
+  // dividing the oppCol and SecCol
+  let testing = [];
+  // var A = [2, 6, 12, 18];
+  // var B = [2, 3, 4, 6];
+  var shapeScoreFraction = oppArray.map(function (n, i) {
+    console.log(secColArray[i]);
+    // returns an array where oppCol/secCol
+    return n / secColArray[i];
+  });
+
+  console.log(shapeScoreFraction);
+
+	// takes shapeScoreFractions and translates to outComeScore
+	let outComeScoreArr = [];
+	let outComeScoreNum = 0;
+
+	shapeScoreFraction.forEach((fraction) => {
+		switch (fraction) {
+      // if fraction = 3/2 --> outCome score = 0 (l)
+      // if fraction = 2 --> outCome score = 0 (l)
+      // if fraction = 1/3 --> outCome score = 0 (l)
+      case 1 / 3:
+      case 3 / 2:
+      case 2:
+        outComeScoreNum += 0;
+        break;
+      // if fraction = 1/2 --> outCome score = 6 (w)
+      // if fraction = 2/3 --> outCome score = 6 (w)
+      // if fraction = 3 --> outCome score = 6 (w)
+      case 1 / 2:
+      case 2 / 3:
+      case 3:
+        outComeScoreNum += 6;
+        break;
+      // if fraction = 1 --> outCome score = 3 (draw)
+      case 1:
+        outComeScoreNum += 3;
+        break;
+    }
+		// added all the outComeScores
+    console.log(outComeScoreNum);
+	});
+
+	// adding SecCol shapeScores within the secColArray numbers
+	let secColShapeScores = secColArray.reduce((a, b) => a + b, 0);
+	console.log(secColShapeScores);
+	// adds SecColShapeScores with OutComeScoreNum to get totalSecColScore
+	const  totalSecColScore = secColShapeScores + outComeScoreNum;
+	console.log(totalSecColScore);
+	return totalSecColScore;
+
+  // end processData
 };
 
 
