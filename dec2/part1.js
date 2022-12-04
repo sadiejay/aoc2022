@@ -74,5 +74,8 @@ export const processData = (rawInputs) => {
 
 
 // spit out results
-getData('test.txt').then(data => processData(data))
-    .then(totalScore => console.log(`🪨📄✂️ The total score is ${totalScore} calories 🪨📄✂️`));
+getData("test.txt")
+  .then((data) => processData(data))
+  .then((totalSecColScore) =>
+    console.log(`🪨📄✂️ The total score is ${totalSecColScore} points 🪨📄✂️`)
+  );
