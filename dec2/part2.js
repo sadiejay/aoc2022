@@ -87,7 +87,7 @@ export const processDatap2 = (rawInputs) => {
         break;
       // BZ = 9
       case "BZ":
-        outComeScoreNum += 8;
+        outComeScoreNum += 9;
         totRoundScoreArr.push(outComeScoreNum);
         break;
       // CX = 2
@@ -107,7 +107,7 @@ export const processDatap2 = (rawInputs) => {
         break;
     }
     // added all the outComeScores to totRoundScoreArr
-    console.log(totRoundScoreArr);
+    // console.log(totRoundScoreArr);
     outComeScoreNum = 0;
   });
 
