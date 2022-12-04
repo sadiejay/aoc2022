@@ -116,7 +116,7 @@ export const processData = (rawInputs) => {
   // var A = [2, 6, 12, 18];
   // var B = [2, 3, 4, 6];
   var shapeScoreFraction = oppArray.map(function (n, i) {
-    console.log(secColArray[i]);
+    // console.log(secColArray[i]);
     // returns an array where oppCol/secCol
     return n / secColArray[i];
   });
@@ -151,7 +151,7 @@ export const processData = (rawInputs) => {
         break;
     }
 		// added all the outComeScores
-    console.log(outComeScoreNum);
+    // console.log(outComeScoreNum);
 	});
 
 	// adding SecCol shapeScores within the secColArray numbers
