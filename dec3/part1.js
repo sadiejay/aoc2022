@@ -1,4 +1,17 @@
 // ! part 1 -
+// assumptions:
+  // each character string is even
+  // character string divided evenly is the amount in the 2 compartments
+// need regex:
+  //  for spliting the input by line break
+  // ! removing all letters that are in common -- could use Set!!
+// strat:
+  // split each line and add to array (1 element in array = 1 rucksake)
+  // take each element and divide in half (one half = 1 compartment)
+  // ! remove all letters that are in common (use Set?) put in array
+  // find priority for all letters in array
+  // add letters in array
+
 
 
 // get Data
