@@ -22,5 +22,5 @@ export const processDatap2 = (rawInputs) => {
 getDatap2("test.txt")
   .then((data) => processDatap2(data))
   .then((lastVariable) =>
-    console.log(`🤔 The total score is ${lastVariable} points 👀`)
+    console.log(`🧳 The total score is ${lastVariable} points 🧳`)
   );

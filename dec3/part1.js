@@ -26,5 +26,5 @@ export const processData = (rawInputs) => {
 getData("test.txt")
   .then((data) => processData(data))
   .then((lastVariable) =>
-    console.log(`🤔 The total score is ${lastVariable} points 👀`)
+    console.log(`🧳 The total score is ${lastVariable} points 🧳`)
   );
